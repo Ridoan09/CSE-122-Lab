@@ -1,4 +1,4 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 class ManchesterUnited {
@@ -6,36 +6,33 @@ class ManchesterUnited {
         int coach;
         int player;
     public:
-        void getdata() {
-            cout << "Enter coach and player: ";
-            cin >> coach >> player;
+        ManchesterUnited() {
+            coach = 0;
+            player = 0;
         }
-        void operator++() {
-            ++coach;
-            ++player;
+        void getData() {
+            cout << "Coach: " << coach << endl;
+            cout << "Player: " << player << endl;
         }
-        bool operator<(ManchesterUnited &obj) {
-            return (coach < obj.coach && player < obj.player);
+        ManchesterUnited operator++() {
+            coach =coach+1;
+          player = player+1;
+            return *this;
         }
 };
 
 int main() {
-    ManchesterUnited ronaldo, fernandes;
-    ronaldo.getdata();
-    ++ronaldo;
-    fernandes.getdata();
-    cout << "Before incrementing Ronaldo: ";
-    if (ronaldo < fernandes) {
-        cout << "Ronaldo is less than Fernandes." << endl;
-    } else {
-        cout << "Ronaldo is greater than Fernandes." << endl;
-    }
-    ++ronaldo;
-    cout << "After incrementing Ronaldo: ";
-    if (ronaldo < fernandes) {
-        cout << "Ronaldo is less than Fernandes." << endl;
-    } else {
-        cout << "Ronaldo is greater than Fernandes." << endl;
-    }
+    ManchesterUnited ronaldo;
+    ManchesterUnited fernandes;
+    ronaldo.getData();
+    fernandes.getData();
+    ronaldo++;
+    cout << "After incrementing Ronaldo by one:" << endl;
+    ronaldo.getData();
+    cout << "Before incrementing Ronaldo, Ronaldo is less than Fernandes: " << ((ronaldo.coach + ronaldo.player) < (fernandes.coach + fernandes.player)) << endl;
+    ronaldo++;
+    cout << "After incrementing Ronaldo by one:" << endl;
+    ronaldo.getData();
+    cout << "After incrementing Ronaldo, Ronaldo is less than Fernandes: " << ((ronaldo.coach + ronaldo.player) < (fernandes.coach + fernandes.player)) << endl;
     return 0;
 }
